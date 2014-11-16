@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xmlns="http://java.sun.com/xml/ns/javaee"
-xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
-http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 	<servlet>
 		<servlet-name>EX02</servlet-name>
 		<servlet-class>com.mta.javacourse.EX02Servlet</servlet-class>
@@ -12,6 +12,17 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>EX02</servlet-name>
 		<url-pattern>/ex02</url-pattern>
 	</servlet-mapping>
+	
+		<servlet>
+		<servlet-name>My_New_Servlet</servlet-name>
+		<servlet-class>com.mta.javacourse.EX03Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>My_New_Servlet</servlet-name>
+		<url-pattern>/my_new_servlet</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
