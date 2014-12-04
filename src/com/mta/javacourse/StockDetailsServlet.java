@@ -11,20 +11,20 @@ import javax.servlet.http.HttpServletResponse;
 public class StockDetailsServlet extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
-		
-		Stock s1= new Stock();
-		Stock s2= new Stock();
-		Stock s3= new Stock();
-		
+
+		Stock s1 = new Stock();
+		Stock s2 = new Stock();
+		Stock s3 = new Stock();
+
 		Calendar c = Calendar.getInstance();
-        c.set (2014, 10, 15, 0, 0, 0);
-        Date newDate = c.getTime();
+		c.set(2014, 10, 15, 0, 0, 0);
+		Date newDate = c.getTime();
 
 		s1.setSymbol("PIN");
 		s1.setAsk(12.4f);
 		s1.setBid(13.1f);
 		s1.setDate(newDate);
-		
+
 		s2.setSymbol("AAL");
 		s2.setAsk(5.5f);
 		s2.setBid(5.78f);
@@ -34,11 +34,11 @@ public class StockDetailsServlet extends HttpServlet {
 		s3.setAsk(31.5f);
 		s3.setBid(31.2f);
 		s3.setDate(newDate);
-		
-		resp.setContentType("text/html");
-		resp.getWriter().println(s1.getHtmlDescription()+ "<br>");
-		resp.getWriter().println(s2.getHtmlDescription()+ "<br>");
-		resp.getWriter().println(s3.getHtmlDescription()+ "<br>");
 
-}
+		resp.setContentType("text/html");
+		resp.getWriter().println(s1.getHtmlDescription() + "<br>");
+		resp.getWriter().println(s2.getHtmlDescription() + "<br>");
+		resp.getWriter().println(s3.getHtmlDescription() + "<br>");
+
+	}
 }
