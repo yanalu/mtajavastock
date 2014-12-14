@@ -153,7 +153,15 @@ public class Portfolio {
 		 * StockStatus constructor
 		 */
 
-		public StockStatus(){};
+		public StockStatus(){
+			symbol= "None";
+			currentAsk=0;
+			currentBid=0;
+			date=new Date();
+			recommendation=0;
+			stockQuantity=0;
+			
+		};
 
 		/**
 		 *copy constructor StockStatus
