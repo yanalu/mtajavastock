@@ -24,10 +24,10 @@ public class Stock {
 
 	public Stock(String symbol, float ask, float bid, Date date)
 	{
-		this.setSymbol(symbol);
-		this.setAsk(ask);
-		this.setBid(bid);
-		this.setDate(date);
+		setSymbol(symbol);
+		setAsk(ask);
+		setBid(bid);
+		setDate(date);
 	}
 	
 	/**
@@ -78,13 +78,13 @@ public class Stock {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-
+	
 	/**
 	 *Method that returns HTML description in bold font with break between lines
 	 */
 	
 	public String getHtmlDescription() {
-		String stockHtmlDetailsString=  "<b>Stock Symbol</b>: " +getSymbol()+" <b>Bid</b>: " +getBid()+ " <b>Ask</b>: " +getAsk()+ " <b>Date</b>: " +getDate();
+		String stockHtmlDetailsString=  "<b>Stock Symbol</b>: " +getSymbol()+ " <b>Bid</b>: " +getBid()+ "$ <b>Ask</b>: " +getAsk()+ "$ <b>Date</b>: " +getDate();
 		return stockHtmlDetailsString;
 	}
 
