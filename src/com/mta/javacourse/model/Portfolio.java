@@ -131,10 +131,10 @@ public class Portfolio {
 		for(int i=0; i<stocks.length;i++)
 			if(symbol.equals(stocks[i].getSymbol()))
 			{
-				stocks[i] = stocks[portfolioSize];
-				stocks[portfolioSize] =null;
-				stockStatus[i] = stockStatus[portfolioSize];
-				stockStatus[portfolioSize] =null;
+				stocks[i] = stocks[portfolioSize-1];
+				stocks[portfolioSize-1] =null;
+				stockStatus[i] = stockStatus[portfolioSize-1];
+				stockStatus[portfolioSize-1] =null;
 				portfolioSize--;
 				return true;
 			}
