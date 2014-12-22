@@ -169,7 +169,7 @@ public class Portfolio {
 					updateBalance(amount1);
 					stockStatus[i].setStockQuantity(0);
 				}
-				else if(stockStatus[i].getStockQuantity()-quantity <= 0){
+				else if(stockStatus[i].getStockQuantity()-quantity < 0){
 						System.out.println("Not enough stocks to sell");
 				}
 				else if (stockStatus[i].getStockQuantity()-quantity>0){
