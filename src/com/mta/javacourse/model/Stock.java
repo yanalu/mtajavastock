@@ -9,13 +9,29 @@ import java.util.Date;
  */
 
 public class Stock {
-	private String symbol;
-	private float ask;
-	private float bid;
-	private Date date;
+	protected String symbol;
+	protected float ask;
+	protected float bid;
+	protected Date date;
+
+	/**
+	 * Constructor Stock
+	 * @param symbol
+	 * @param ask
+	 * @param bid
+	 * @param date
+	 */
+
+	public Stock()
+	{
+		setSymbol("None");
+		setAsk(0);
+		setBid(0);
+		date=new Date();
+	}
 	
 	/**
-	 * constructor Stock
+	 * Copy constructor Stock
 	 * @param symbol
 	 * @param ask
 	 * @param bid
@@ -29,9 +45,9 @@ public class Stock {
 		setBid(bid);
 		setDate(date);
 	}
-	
+
 	/**
-	 * copy constructor Stock
+	 * Copy constructor Stock
 	 * @param stock
 	 */
 
@@ -42,7 +58,7 @@ public class Stock {
 		setBid(stock.getBid());
 		setDate(stock.getDate());
 	}
-	
+
 	//Getters
 
 	public String getSymbol() {
@@ -52,17 +68,17 @@ public class Stock {
 	public float getAsk() {
 		return ask;
 	}
-	
+
 	public float getBid() {
 		return bid;
 	}
-	
+
 	public Date getDate() {
 		return date;
 	}
-	
+
 	//Setters
-	
+
 	public void setSymbol(String symbol) {
 		this.symbol = symbol;
 	}
@@ -78,11 +94,11 @@ public class Stock {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
 	/**
 	 *Method that returns HTML description in bold font with break between lines
 	 */
-	
+
 	public String getHtmlDescription() {
 		String stockHtmlDetailsString=  "<b>Stock Symbol</b>: " +getSymbol()+ " <b>Bid</b>: " +getBid()+ "$ <b>Ask</b>: " +getAsk()+ "$ <b>Date</b>: " +getDate();
 		return stockHtmlDetailsString;

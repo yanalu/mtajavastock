@@ -14,15 +14,16 @@ import com.mta.javacourse.model.Stock;
 
 public class PortfolioService {
 	
+
 	/**
-	 * create new portfolio and add new stocks
+	 * Create new portfolio and add new stocks
 	 * @return
 	 */
 
 	public Portfolio getPortfolio()
 	{
 		Portfolio myPortfolio= new Portfolio();
-		myPortfolio.setTitle("<b>Exercise 07 - Portfolio</b>");
+		myPortfolio.setTitle("<b>Exercise 08 - Portfolio</b>");
 		myPortfolio.setBalance(10000);
 		
 	
