@@ -24,7 +24,7 @@ public class PortfolioService {
 	{
 		Portfolio myPortfolio= new Portfolio();
 		myPortfolio.setTitle("<b>Exercise 08 - Portfolio</b>");
-		myPortfolio.setBalance(10000);
+		myPortfolio.updateBalance(10000);
 		
 	
 		Calendar c = Calendar.getInstance();

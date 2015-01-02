@@ -215,10 +215,6 @@ public class Portfolio {
 		this.portfolioSize=portfolioSize;
 	}
 
-	public void setBalance(float balance) {
-		this.balance = balance;
-	}
-
 	//Getters
 
 	public StockStatus[] getStockStatus()
