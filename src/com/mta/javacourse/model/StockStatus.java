@@ -74,3 +74,4 @@ public class StockStatus extends Stock{
 		return recommendation;
 	}
 }
+
