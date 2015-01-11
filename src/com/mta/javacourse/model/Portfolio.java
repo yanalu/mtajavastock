@@ -1,5 +1,10 @@
 package com.mta.javacourse.model;
 
+import com.mta.javacourse.exception.BalanceException;
+import com.mta.javacourse.exception.PortfolioFullException;
+import com.mta.javacourse.exception.StockAlreadyExistsException;
+import com.mta.javacourse.exception.StockNotExistException;
+
 /**
  *Class represent Portfolio
  *@author Yana Lukashik
@@ -47,13 +52,13 @@ public class Portfolio {
 	 *@param s1
 	 */
 
-	public void addStock(Stock s1)
+	public void addStock(Stock s1)throws StockAlreadyExistsException, PortfolioFullException
 	{
 		for(int i=0; i < portfolioSize; i++)
 		{
 			if(this.stockStatus[i].getSymbol().equals(s1.getSymbol()))
 			{
-				System.out.println("Stock already exists");
+				throw new StockAlreadyExistsException(s1.getSymbol());
 			}
 		}
 		if(portfolioSize < stockStatus.length)
@@ -63,7 +68,7 @@ public class Portfolio {
 		}
 
 		else
-			System.out.println("Can't add new stock, portfolio can have only " +MAX_PORTFOLIO_SIZE +"stocks ");
+			throw new PortfolioFullException();
 	}
 
 	/**
@@ -71,7 +76,7 @@ public class Portfolio {
 	 * @param symbol
 	 */
 
-	public  boolean removeStock(String symbol)
+	public  void removeStock(String symbol) throws StockNotExistException
 	{
 		sellStock(symbol,-1);
 		for(int i=0; i<stockStatus.length;i++)
@@ -80,9 +85,9 @@ public class Portfolio {
 				stockStatus[i] = stockStatus[portfolioSize-1];
 				stockStatus[portfolioSize-1] =null;
 				portfolioSize--;
-				return true;
 			}
-		return false;
+			else
+				throw new StockNotExistException(symbol);
 	}
 
 	/**
@@ -102,7 +107,7 @@ public class Portfolio {
 	 * @return
 	 */
 
-	public boolean sellStock(String symbol, int quantity )
+	public void sellStock(String symbol, int quantity ) throws StockNotExistException
 	{
 
 		for(int i=0; i<stockStatus.length; i++)
@@ -121,9 +126,9 @@ public class Portfolio {
 					float amount = quantity*stockStatus[i].getBid();
 					updateBalance(amount);
 				}
-				return true;
 			}
-		return false;
+			else
+				throw new StockNotExistException(symbol);
 	}
 
 	/**
@@ -133,26 +138,30 @@ public class Portfolio {
 	 * @return
 	 */
 
-	public boolean buyStock(String symbol, int quantity )
+	public void buyStock(String symbol, int quantity ) throws StockNotExistException, BalanceException
 	{
 
 		for(int i=0; i<stockStatus.length;i++)
 			if(symbol.equals(stockStatus[i].getSymbol()))
 			{
-				if( quantity == -1) {
-					stockStatus[i].setStockQuantity(stockStatus[i].getStockQuantity()+ (int)(balance/stockStatus[i].getAsk()));
+				if( quantity == -1)
+				{
 					float spent = ((int)(balance/stockStatus[i].getAsk()) *stockStatus[i].getAsk())/(-1); //how much bought
+					if (spent/(-1) > balance)
+						throw new BalanceException();
+					stockStatus[i].setStockQuantity(stockStatus[i].getStockQuantity()+ (int)(balance/stockStatus[i].getAsk()));
 					updateBalance(spent);
-
 				}
-				else{
-					stockStatus[i].setStockQuantity(stockStatus[i].getStockQuantity()+quantity);
+				else
+				{
 					float spent1=(quantity*stockStatus[i].getAsk())/(-1);
+					if (spent1/(-1) > balance)
+						throw new BalanceException();
+					stockStatus[i].setStockQuantity(stockStatus[i].getStockQuantity()+quantity);
 					updateBalance(spent1);
 				}
-				return true;
 			}
-		return false;
+		throw new StockNotExistException(symbol);
 	}
 
 	/**
@@ -163,13 +172,12 @@ public class Portfolio {
 	public String getHtmlString() 
 	{
 
-		String stockStr= "<h1><center>" + getTitle() + "</center></h1>" + "<br/>";
+		String stockStr= "<h1><b><center><font face=tahoma><span style=background-color:#99CCFF>Exercise 08- My portfolio</span style=background-color:#99CCFF><font face=tahoma></center></b></h1>";
 
-		stockStr +="<b> Total Portfolio Value: </b>" + getTotalValue() +"$ <b>Total Stocks Value: </b>"+ getStocksValue() + "$ <b>Balance: </b>"+ getBalance() +"$ <br/><br/>";
+		stockStr +="<b>Total Portfolio Value: </b>" + getTotalValue() +"$ <b>Total Stocks Value: </b>"+ getStocksValue() + "$ <b>Balance: </b>"+ getBalance() +"$ <br/><br/></h1>";
 
 		for(int i=0; i<portfolioSize; i++)
-			stockStr += stockStatus[i].getHtmlDescription() + "<br/>";
-
+			stockStr += stockStatus[i].getHtmlDescription() + "<br/></font face>";
 
 		return stockStr;
 	}
@@ -197,7 +205,7 @@ public class Portfolio {
 	{
 		return getBalance() + getStocksValue();
 	}
-	
+
 	//Setters
 
 	public void setTitle(String title1)
