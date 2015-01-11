@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.mta.javacourse.exception.BalanceException;
+import com.mta.javacourse.exception.NotEnoughStocksToSellException;
 import com.mta.javacourse.exception.PortfolioFullException;
 import com.mta.javacourse.exception.StockAlreadyExistsException;
 import com.mta.javacourse.exception.StockNotExistException;
@@ -52,6 +53,10 @@ public class PortfolioServlet  extends HttpServlet {
 			resp.getWriter().println(e.getMessage());
 		}
 		catch (BalanceException e)
+		{
+			resp.getWriter().println(e.getMessage());
+		}
+		catch (NotEnoughStocksToSellException e)
 		{
 			resp.getWriter().println(e.getMessage());
 		}				

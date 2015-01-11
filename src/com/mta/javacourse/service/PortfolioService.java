@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.mta.javacourse.exception.BalanceException;
+import com.mta.javacourse.exception.NotEnoughStocksToSellException;
 import com.mta.javacourse.exception.PortfolioFullException;
 import com.mta.javacourse.exception.StockAlreadyExistsException;
 import com.mta.javacourse.exception.StockNotExistException;
@@ -26,12 +27,13 @@ public class PortfolioService {
 	 * @throws StockAlreadyExistsException 
 	 * @throws BalanceException 
 	 * @throws StockNotExistException 
+	 * @throws NotEnoughStocksToSellException 
 	 */
 
-	public Portfolio getPortfolio() throws StockAlreadyExistsException, PortfolioFullException, StockNotExistException, BalanceException
+	public Portfolio getPortfolio() throws StockAlreadyExistsException, PortfolioFullException, StockNotExistException, BalanceException, NotEnoughStocksToSellException
 	{
 		Portfolio myPortfolio= new Portfolio();
-		myPortfolio.setTitle("<b>Exercise 08 - Portfolio</b>");
+		myPortfolio.setTitle("<b>Exercise 09 - Portfolio</b>");
 		myPortfolio.updateBalance(10000);
 		
 	

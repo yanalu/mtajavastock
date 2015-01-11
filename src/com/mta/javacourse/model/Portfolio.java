@@ -1,6 +1,7 @@
 package com.mta.javacourse.model;
 
 import com.mta.javacourse.exception.BalanceException;
+import com.mta.javacourse.exception.NotEnoughStocksToSellException;
 import com.mta.javacourse.exception.PortfolioFullException;
 import com.mta.javacourse.exception.StockAlreadyExistsException;
 import com.mta.javacourse.exception.StockNotExistException;
@@ -76,7 +77,7 @@ public class Portfolio {
 	 * @param symbol
 	 */
 
-	public  void removeStock(String symbol) throws StockNotExistException
+	public  void removeStock(String symbol) throws StockNotExistException, NotEnoughStocksToSellException
 	{
 		sellStock(symbol,-1);
 		for(int i=0; i<stockStatus.length;i++)
@@ -107,7 +108,7 @@ public class Portfolio {
 	 * @return
 	 */
 
-	public void sellStock(String symbol, int quantity ) throws StockNotExistException
+	public void sellStock(String symbol, int quantity ) throws StockNotExistException, NotEnoughStocksToSellException
 	{
 
 		for(int i=0; i<stockStatus.length; i++)
@@ -119,7 +120,7 @@ public class Portfolio {
 					stockStatus[i].setStockQuantity(0);
 				}
 				else if(stockStatus[i].getStockQuantity()-quantity < 0){
-					System.out.println("Not enough stocks to sell");
+					throw new NotEnoughStocksToSellException();
 				}
 				else if (stockStatus[i].getStockQuantity()-quantity >= 0){
 					stockStatus[i].setStockQuantity(stockStatus[i].getStockQuantity()-quantity);
