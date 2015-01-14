@@ -31,32 +31,15 @@ public class PortfolioServlet  extends HttpServlet {
 
 		PortfolioService portfolioService = new PortfolioService();
 		Portfolio portfolio;
-		
+
 		try
 		{
 			portfolio = portfolioService.getPortfolio();
 			String portfolioStr= portfolio.getHtmlString();
 			resp.getWriter().println(portfolioStr);
-			
+
 		}
-		
-		catch (StockAlreadyExistsException e)
-		{
-			resp.getWriter().println(e.getMessage());
-		}
-		catch (PortfolioFullException e)
-		{
-			resp.getWriter().println(e.getMessage());
-		}
-		catch (StockNotExistException e)
-		{
-			resp.getWriter().println(e.getMessage());
-		}
-		catch (BalanceException e)
-		{
-			resp.getWriter().println(e.getMessage());
-		}
-		catch (NotEnoughStocksToSellException e)
+		catch (Exception e)
 		{
 			resp.getWriter().println(e.getMessage());
 		}				

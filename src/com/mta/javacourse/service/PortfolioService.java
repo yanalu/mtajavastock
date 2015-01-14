@@ -30,7 +30,7 @@ public class PortfolioService {
 	 * @throws NotEnoughStocksToSellException 
 	 */
 
-	public Portfolio getPortfolio() throws StockAlreadyExistsException, PortfolioFullException, StockNotExistException, BalanceException, NotEnoughStocksToSellException
+	public Portfolio getPortfolio() throws Exception
 	{
 		Portfolio myPortfolio= new Portfolio();
 		myPortfolio.setTitle("<b>Exercise 09 - Portfolio</b>");
