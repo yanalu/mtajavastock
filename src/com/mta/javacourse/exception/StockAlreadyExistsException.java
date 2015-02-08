@@ -1,16 +1,10 @@
 package com.mta.javacourse.exception;
 
-/**
- * Stock already exists Exception
- * @author yana
- * January 2015
- */
+public class StockAlreadyExistsException extends Exception {
 
-public class StockAlreadyExistsException extends Exception{
-	
-	public StockAlreadyExistsException(String symbol)
-	{
-		super("Stock " +symbol+ " already exists");
+	private static final long serialVersionUID = 1L;
+
+	public StockAlreadyExistsException(String symbol) {
+		super("Stock " + symbol + " already exists!");
 	}
-
 }

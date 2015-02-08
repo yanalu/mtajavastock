@@ -1,7 +1,5 @@
 package com.mta.javacourse.model;
 
-import java.util.Date;
-
 import com.mta.javacourse.model.Portfolio.ALGO_RECOMMENDATION;
 
 /**
